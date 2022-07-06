@@ -1,13 +1,19 @@
+//example.js
 const Generator = require('yeoman-generator');
 
 //设置BaseGenerator 类，作为sub-generator的父项
-BaseGenerator = class BaseGenerator extends Generator {
-  constructor(args, opts) {    
-    super(args, opts);
-
+class BaseGenerator extends Generator {
+  constructor(opts) {    
+    super(opts);
   }
 
-  writeTem(){
-    console.log('writeTem');
+  initializing(){
+    console.log('initializing')
+  }          
+  writing(){
+    console.log('writing');
   }
+
 };
+
+module.exports = BaseGenerator;

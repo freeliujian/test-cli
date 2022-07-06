@@ -18,5 +18,9 @@ if (!semver.satisfies(process.version, ">= 8.0.0")) {
   process.exit(1);
 }
 
-(run())();
+
+(async () => {
+  await run();
+  process.exit(0);
+})();
 
