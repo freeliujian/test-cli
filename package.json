@@ -14,7 +14,9 @@
     "inquirer": "^8.0.0",
     "mkdirp": "^1.0.4",
     "semver": "^7.3.7",
-    "yargs-parser": "^21.0.1"
+    "yargs-parser": "^21.0.1",
+    "yeoman-environment": "^3.9.1",
+    "yeoman-generator": "^5.6.1"
   },
   "devDependencies": {
     "@types/inquirer": "^8.2.1",
