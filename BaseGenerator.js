@@ -5,15 +5,20 @@ const Generator = require('yeoman-generator');
 class BaseGenerator extends Generator {
   constructor(opts) {    
     super(opts);
+    this.type = opts.type;
+    this.path = opts.resolved;
   }
 
   initializing(){
     console.log('initializing')
   }          
-  writing(){
-    console.log('writing');
+  writeFiles({context}){
+    this.fs.copyTpl(
+      this.templatePath('app.txt'),
+      this.destinationPath('app.txt'),
+      context
+    )
   }
-
 };
 
 module.exports = BaseGenerator;

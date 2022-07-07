@@ -20,6 +20,7 @@ const tem = fs
 
 const runGenerator = async (
   generatorPath,
+  type
 ) => {
   return new Promise((resolve) => {
     const Generator = require(generatorPath);
@@ -30,6 +31,7 @@ const runGenerator = async (
     const generator = new Generator({
       env,
       resolved: require.resolve(generatorPath),
+      type
     });
 
     return generator.run(() => {
@@ -40,6 +42,7 @@ const runGenerator = async (
 };
 
 const run = async () => {
+
   const selectTem = await prompt([
     {
       name: "type",
@@ -48,9 +51,9 @@ const run = async () => {
       choices: tem,
     },
   ]);
-
+  const {type} = selectTem;
   try {
-    return runGenerator(`./generators/${selectTem.type}`);
+    return runGenerator(`./generators/${selectTem.type}`,type);
   } catch (e) {
     console.error(chalk.red(`模板创建失败`), e);
     process.exit(1);

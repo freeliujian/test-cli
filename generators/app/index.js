@@ -3,7 +3,7 @@ const BasicGenerator = require("../../BaseGenerator");
 
 module.exports = class Generator extends BasicGenerator {
   prompting() {
-    this.prompt([
+    return  this.prompt([
       {
         type: "input",
         name: "name",
@@ -15,12 +15,15 @@ module.exports = class Generator extends BasicGenerator {
         name: "age",
         message: "请输入你的年龄",
       },
-    ]);
+    ]).then(props => {
+      this.props = {...props};
+    });
+
+
+  }
+  
+  writing (){
+    this.writeFiles({context:this.props})
   }
 
-  
-  writings (){
-    this.writing();
-  }
-  
 };
